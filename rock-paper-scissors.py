@@ -27,15 +27,19 @@ scissors = '''
 '''
 
 print('Welcom to the game "Rock, Paper, Scissors"')
-human_move = int(input("What do you choose? Type 0 for Rock, 1 for Paper, 2 for Scissors "))
-computer_move = random.randint(0,2)
-list = [rock, paper, scissors]
-print(f"human_move\n{list[human_move]}\nComputer choose:\n{list[computer_move]}")
 result = ""
-if (human_move == 0 and computer_move == 1) or (human_move == 1 and computer_move == 2) or (human_move == 2 and computer_move == 0):
-  result = "You Lose"
-elif (human_move == 0 and computer_move == 0) or (human_move == 1 and computer_move == 1) or (human_move == 2 and computer_move == 2):
-  result = "It's a tie"
+human_move = int(input("What do you choose? Type 0 for Rock, 1 for Paper, 2 for Scissors "))
+if human_move >= 3 or human_move < 0:
+  result = "It's invalid move, you loose"
+  print(result)
 else:
-  result = "You are the winner"
-print(result)
+  computer_move = random.randint(0,2)
+  list = [rock, paper, scissors]
+  print(f"Human_move\n{list[human_move]}\nComputer choose:\n{list[computer_move]}")
+  if (human_move == 0 and computer_move == 1) or (human_move == 1 and computer_move == 2) or (human_move == 2 and computer_move == 0):
+    result = "You Lose"
+  elif (human_move == computer_move):
+    result = "It's a tie"
+  else:
+    result = "You are the winner"
+  print(result)
