@@ -5,13 +5,12 @@ print(logo)
 
 auction = {}
 auction_time = True
-
 while auction_time:  
   name = input("What is your name? ")
   bid = int(input("What is your bid? $ "))
   auction[name] = bid
   new_member = input('Are there other users who wants to bid? Answer "yes" or "no" ').lower()
-  clear() # replit function allows to clear console
+  clear() # replit function allows clear console
   if new_member == "no":
     auction_time = False
 
