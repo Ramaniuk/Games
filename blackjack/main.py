@@ -81,8 +81,6 @@ def play_game():
     player_score = player_round(player_score, dealer_score)
     dealer_score = computer_round(dealer_score) 
     end_game = check_score(player_score, dealer_score)
-    print(player_score)
-    print(dealer_score)
 
 while input("Do you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
   clear()
