@@ -24,14 +24,13 @@ MENU = {
     }
 }
 
-
 resources = {
     "water": 300,
     "milk": 200,
     "coffee": 100,
-    "money": 0
 }
 
+money = 0
 
 coins = [
     ["quarters", "dimes", "nickles", "pennies"],
@@ -43,53 +42,54 @@ coins = [
      }
 ]
 
-def purchase(drink):
+def process_coins(price):
     print("Please insert coins.")
     total_coins = 0
     for coin in coins[0]:
         coin_insert = int(input(f"how many {coin}?: "))
         total_coins += round((coin_insert * coins[1][coin]), 2)
-        print(total_coins)
-    beverage_cost = MENU[drink]["cost"]
-    print(beverage_cost)
-    change = total_coins - beverage_cost
-    print(change)
-    if change >= 0:
-        print(f"Here is ${change} in change.\nHere is your {drink} ☕️. Enjoy!")
-        change_resources(drink)
-    else:
+    change = total_coins - price
+    if change < 0:
         print("Sorry that's not enough money. Money refunded.")
+        return False
+    print(f"Here is ${change} in change.")
+    return True
 
-def calc_report() :
+def is_enough_resources(drink):
+    for item in resources:
+        if resources[item] >= MENU[drink]["ingredients"][item]:
+            return True
+        else:
+            print(f"Sorry there is not enough {item}.")
+            return False
+
+
+def calc_report():
     print(f'Water: {resources["water"]}ml')
     print(f'Milk: {resources["milk"]}ml')
     print(f'Coffee: {resources["coffee"]}g')
-    print(f'Money: ${resources["money"]}')
+    print(f'Money: ${money}')
 
 def change_resources(drink):
-    resources["money"] += MENU[drink]["cost"]
+    global money
+    money += MENU[drink]["cost"]
     for item in resources:
         if item in MENU[drink]["ingredients"]:
             resources[item] = resources[item] - MENU[drink]["ingredients"][item]
 
-def coffee_machine(drink):
-    if drink.lower() == "report":
+
+is_on = False
+while not is_on:
+    print("Coffee Machine ☕")
+    choice = input(f'What would you like? (espresso ${MENU["espresso"]["cost"]} /latte ${MENU["latte"]["cost"]} / cappuccino ${MENU["cappuccino"]["cost"]}): ')
+    if choice == "off":
+        is_on = True
+    elif choice == "report":
         calc_report()
     else:
-        purchase(drink)
-
-
-end_purchase = False
-while not end_purchase:
-    print("Coffee Machine ☕")
-    beverage = input(f'What would you like? (espresso ${MENU["espresso"]["cost"]} /latte ${MENU["latte"]["cost"]} / cappuccino ${MENU["cappuccino"]["cost"]}): ')
-    if beverage == "off":
-        resources = {
-            "water": 300,
-            "milk": 200,
-            "coffee": 100,
-            "money": 0
-        }
-        end_purchase = True
-    else:
-        coffee_machine(beverage)
+        if is_enough_resources(choice):
+            if process_coins(MENU[choice]["cost"]):
+                change_resources(choice)
+                print(f"Here is your {choice} ☕️.Enjoy!")
+        else:
+            is_on = True
