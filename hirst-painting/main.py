@@ -25,7 +25,7 @@ tim.forward(300)
 tim.setheading(0)
 number_of_dots = 101
 
-for dot_count in range(1, number_of_dots:
+for dot_count in range(1, number_of_dots):
     tim.dot(20, choice(rgb_colors))
     tim.forward(50)
     if dot_count % 10 == 0:
