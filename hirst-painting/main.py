@@ -37,12 +37,5 @@ for dot_count in range(1, number_of_dots:
 
 
 
-
-
-
-
-
-
-
 screen = Screen()
 screen.exitonclick()
