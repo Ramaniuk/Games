@@ -16,10 +16,7 @@ guessed_states = []
 while right_answer < 50:
     answer = screen.textinput(title=f"Guess the state? {right_answer}/50", prompt="What is the next US state? Type Exit to finish the game").lower().capitalize()
     if answer == "Exit":
-        not_guessed_states = []
-        for state in all_states:
-            if state not in guessed_states:
-                not_guessed_states.append(state)
+        not_guessed_states = [state for state in all_states if state not in guessed_states]
         new_data = pandas.DataFrame(not_guessed_states)
         new_data.to_csv("states_to_learn.csv")
         break
