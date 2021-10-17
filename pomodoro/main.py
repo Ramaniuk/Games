@@ -37,6 +37,7 @@ def start_timer():
         count_down(long_break_sec)
         timer_label['text'] = "Long Break"
         timer_label['fg'] = RED
+
     elif reps % 2 == 0:
         count_down(short_break_sec)
         timer_label.config(text="Short Break", fg=PINK)
