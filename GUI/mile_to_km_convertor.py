@@ -1,4 +1,3 @@
-import decimal
 from tkinter import *
 
 FONT = "Arial",14,"bold"
