@@ -13,7 +13,7 @@ if day_of_week == 6:
         quote = random.choice(f)
 
 my_email = 'testForCoursesOlga@gmail.com'
-password = 'testForCourses12'
+password = 'password'
 connection = smtplib.SMTP("smtp.gmail.com",587)
 connection.starttls()
 connection.login(user=my_email,password=password)
