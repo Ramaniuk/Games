@@ -20,7 +20,7 @@ for ind in file.index:
         message = message.join(sample)
 
         my_email = 'testForCoursesOlga@gmail.com'
-        password = 'testForCourses12'
+        password = 'testForCoursesR'
         connection = smtplib.SMTP("smtp.gmail.com", 587)
         connection.starttls() # call connection
         connection.login(user=my_email, password=password)
