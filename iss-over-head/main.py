@@ -41,7 +41,7 @@ while True:
     time.sleep(60)
     if is_iss_overhead() and is_night():
             my_email = 'testForCoursesOlga@gmail.com'
-            password = 'testForCourses1224'
+            password = 'password'
             connection = smtplib.SMTP("smtp.gmail.com", 587)
             connection.starttls()
             connection.login(user=my_email, password=password)
