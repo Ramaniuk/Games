@@ -49,7 +49,7 @@ for exercise in result["exercises"]:
         }
         }
     sheet_response = requests.post(url=workout_tracking_endpoint,headers=headers,json=body_sheety)
-#print(sheet_response.text)
+print(sheet_response.text)
 print(sheet_response.status_code)
 
 
